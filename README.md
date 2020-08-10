@@ -1,43 +1,40 @@
 # vuejs-cordova-sample
 
-[![Build Status](https://travis-ci.org/c4software/vuejs-cordova-sample.svg?branch=master)](https://travis-ci.org/c4software/vuejs-cordova-sample)
+> Application permettant de signaler des espèces invasives et savoir lorsque l'on se trouve dans une zone protégée.
 
-> Sample VueJS app thats use Cordova capabilities
+<!-- ![Demo screenshot](demo.png) -->
 
-![Demo screenshot](demo.png)
-
-## Build Setup
+## Configuration 
 
 ```bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
+# execution avec hot reload sur localhost:8080
 npm run serve
 
-# build for production to run in Cordova
+# build pour la production
 npm run build
-
 ```
 
-## First Cordova build
+## Premier build
 
-Run the command :
+Executez les commandes :
 
 ```sh
+npm install
 npm run build
 cd cordova_app
 cordova platform add android
-cordova run # or build
+cordova run # ou build
 ```
 
-## Next Cordova build
+## Prochains build Cordova
+
+À partir de la racine :
 
 ```sh
-npm run cordova_run # or cordova_build
+npm run cordova_run # ou cordova_build
 ```
 
-## Plugins
+<!-- ## Plugins
 
 - cordova-plugin-dialogs
 - cordova-plugin-vibration
@@ -46,4 +43,4 @@ npm run cordova_run # or cordova_build
 - cordova-plugin-camera
 - phonegap-nfc
 - cordova-plugin-statusbar
-- cordova-plugin-headercolor
+- cordova-plugin-headercolor -->
