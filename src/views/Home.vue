@@ -1,10 +1,10 @@
 <template>
   <v-container text-center>
     <div class="home">
-      <img class="logo" src="vuejs.png" />
-      <img class="logo" src="cordova_256.png" />
+      <img class="logo" src="aliemLogo.jpg" />
+      <img class="logo" src="arobaseLogo.png" />
       <h4>{{$t("title")}}</h4>
-      <v-btn @click="openMenu" class="mt-10">{{$t("showSample")}}</v-btn>
+      <v-btn @click="openMenu" class="mt-10">{{$t("showMenu")}}</v-btn>
     </div>
   </v-container>
 </template>
@@ -23,9 +23,15 @@ export default {
 </script>
 
 <style scoped>
-  img.logo{
-    display: inline-block;
-    width: 90px;
-    padding: 20px;
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+img.logo{
+    width: 300px;
+    padding: 10px;
   }
 </style>

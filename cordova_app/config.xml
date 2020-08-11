@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="vuejs.cordova.sample" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>VueJS Cordova Sample</name>
+    <name>Espèces invasives - ALIEM</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        Une application de signalement d'espèces invasives et de diffusion d'informations.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Valentin Brosseau
+    <author email="info@arobase.fr" href="https://arobase.fr">
+        AROBASE SARL - Résidence de l'Orta, Route de Castirla - 20250 Corte
     </author>
     <content src="index.html" />
     <access origin="*" />

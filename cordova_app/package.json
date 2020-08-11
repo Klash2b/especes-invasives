@@ -1,11 +1,11 @@
 {
-    "name": "vuejs_cordova_sample",
-    "displayName": "Vue Cordova Sample",
+    "name": "especes-invasives",
+    "displayName": "Espèces invasives - ALIEM",
     "version": "1.0.0",
-    "description": "A sample Apache Cordova application that responds to the deviceready event.",
+    "description": "Une application de signalement d'espèces invasives et de diffusion d'informations.",
     "main": "index.js",
     "scripts": {},
-    "author": "Apache Cordova Team",
+    "author": "AROBASE",
     "license": "Apache-2.0",
     "dependencies": {
         "cordova-android": "^7.1.4",

@@ -4,7 +4,7 @@
 
     <v-list-item v-for="(item, i) in items" :key="`item_${i}`"  :to="item.action">
       <v-list-item-icon>
-        <v-icon v-text="item.icon"></v-icon>
+        <v-icon v-text="item.icon" outlined></v-icon>
       </v-list-item-icon>
 
       <v-list-item-content>
@@ -22,11 +22,12 @@ export default {
     return {
       items: [
         { icon: 'home', text: this.$t("drawer.home"), action: '/' },
-        { icon: 'vibration', text: this.$t('drawer.vibration'), action: 'vibration' },
-        { icon: 'camera', text: this.$t('drawer.camera'), action: 'camera' },
-        { icon: 'flash_on', text: this.$t('drawer.flash'), action: 'flash' },
-        { icon: 'gps_fixed', text: this.$t('drawer.localisation'), action: 'localisation' },
-        { icon: 'nfc', text: this.$t('drawer.nfc'), action: 'nfc' }
+        { icon: 'description', text: this.$t('drawer.news'), action: 'news' },
+        { icon: 'find_in_page', text: this.$t('drawer.consult'), action: 'consult' },
+        { icon: 'linked_camera', text: this.$t('drawer.report'), action: 'report' },
+        { icon: 'image_search', text: this.$t('drawer.identify'), action: 'identify' },
+        { icon: 'person', text: this.$t('drawer.profile'), action: 'profile' },
+        { icon: 'settings', text: this.$t('drawer.settings'), action: 'settings' },
       ]
     }
   }

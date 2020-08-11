@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/views/Home'
-import Vibration from '@/views/Vibration'
-import Flash from '@/views/Flash'
-import Camera from '@/views/Camera'
-import Nfc from '@/views/Nfc'
-import Localisation from '@/views/Localisation'
+import News from '@/views/News'
+import Consult from '@/views/Consult'
+import Report from '@/views/Report'
+import Identify from '@/views/Identify'
+import Profile from '@/views/Profile'
+import Settings from '@/views/Settings'
 
 Vue.use(Router);
 
@@ -16,25 +17,29 @@ export default new Router({
       name: 'Home',
       component: Home
     },{
-      path: '/vibration',
-      name: 'Vibration',
-      component: Vibration
+      path: '/consult',
+      name: 'Consult',
+      component: Consult
     },{
-      path: '/flash',
-      name: 'Flash',
-      component: Flash
+      path: '/news',
+      name: 'News',
+      component: News
     },{
-      path: '/camera',
-      name: 'Camera',
-      component: Camera
+      path: '/identify',
+      name: 'Identify',
+      component: Identify
     },{
-      path: '/nfc',
-      name: 'Nfc',
-      component: Nfc
+      path: '/report',
+      name: 'Report',
+      component: Report
     },{
-      path: '/localisation',
-      name: 'Localisation',
-      component: Localisation
-    }
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
+    },{
+      path: '/settings',
+      name: 'Settings',
+      component: Settings
+    },
   ]
 })

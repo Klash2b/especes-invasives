@@ -1,31 +1,32 @@
 {
-  "title": "Exemples VueJS + Cordova",
-  "showSample": "Afficher les examples",
+  "title": "Espèces invasives - ALIEM",
+  "showMenu": "Afficher le menu",
   "drawer": {
     "home": "Accueil",
-    "vibration": "Vibreur",
-    "camera": "Camera",
-    "flash": "Flash",
-    "localisation": "Localisation",
-    "nfc": "Nfc"
+    "news": "Actualités",
+    "consult": "Fiches Espèces",
+    "report": "Signaler une espèce",
+    "identify": "Identifier une espèce",
+    "profile": "Mon Profil",
+    "settings": "Paramètres"
   },
-  "see_on_github": "Voir sur Github",
-  "getPosition": "Localisation en cours",
-  "positionNotAvailable": "Localisation impossible",
-  "startVibration": "Démarrer la vibration",
-  "flashlight": {
-    "start": "Allumer la lampe torche",
-    "stop": "Éteindre la lampe torche",
-    "notAvailable": "Plugin Cordova non installé"
+  "news": {
+
   },
-  "nfcText": {
-    "waitingTag": "En attente d’un tag…",
-    "tagSerial": "Numéro de série",
-    "notAvailable": "Votre mobile est incompatible.",
-    "showSettings": "Activer le NFC",
-    "history": "Historique",
-    "noHistory": "Aucun historique"
+  "consult": {
+    "takePhoto": "Prendre une photo"
   },
-  "takePhoto": "Prendre une photo",
+  "report": {
+
+  },
+  "identify": {
+
+  },
+  "profile": {
+
+  },
+  "settings": {
+
+  },
   "error": "Non disponible"
 }

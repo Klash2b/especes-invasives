@@ -6,6 +6,11 @@
                 {
                     "source": "C:\\Users\\matte\\Documents\\GitHub\\especes-invasives\\cordova_app\\platforms\\android\\app\\src\\main\\res\\values\\cordova-window-background-strings.xml",
                     "from": {
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
+                    },
+                    "to": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
@@ -16,37 +21,34 @@
                 {
                     "source": "C:\\Users\\matte\\Documents\\GitHub\\especes-invasives\\cordova_app\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
                     "from": {
-                        "startLines": "4,2,3",
-                        "startColumns": "4,4,4",
-                        "startOffsets": "172,55,113",
-                        "endColumns": "63,57,58",
-                        "endOffsets": "231,108,167"
+                        "startLines": "-1,2,-1",
+                        "startColumns": "-1,4,-1",
+                        "startOffsets": "-1,55,-1",
+                        "endColumns": "-1,62,-1",
+                        "endOffsets": "-1,113,-1"
                     },
                     "to": {
                         "startLines": "3,4,5",
                         "startColumns": "4,4,4",
-                        "startOffsets": "115,179,237",
-                        "endColumns": "63,57,58",
-                        "endOffsets": "174,232,291"
+                        "startOffsets": "115,179,242",
+                        "endColumns": "63,62,58",
+                        "endOffsets": "174,237,296"
                     }
                 },
                 {
                     "source": "C:\\Users\\matte\\Documents\\GitHub\\especes-invasives\\cordova_app\\platforms\\android\\app\\src\\main\\res\\values\\cordova-window-background-styles.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "4",
-                        "endColumns": "12",
-                        "endOffsets": "238"
+                        "startLines": "-1",
+                        "startColumns": "-1",
+                        "startOffsets": "-1"
                     },
                     "to": {
                         "startLines": "6",
                         "startColumns": "4",
-                        "startOffsets": "296",
+                        "startOffsets": "301",
                         "endLines": "8",
                         "endColumns": "12",
-                        "endOffsets": "479"
+                        "endOffsets": "484"
                     }
                 }
             ]
