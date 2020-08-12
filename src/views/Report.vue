@@ -1,41 +1,62 @@
 // Require Cordova plugin : cordova-plugin-camera
 <template>
   <v-container text-center>
-    <v-form ref="form" v-model="valid" lazy-validation>
-      <v-select
+    <v-form ref="form" v-model="form" class="pa-4 pt-6">
+      <v-autocomplete
         v-model="select"
         :items="items"
-        :rules="[(v) => !!v || 'Item is required']"
-        label="Item"
+        :rules="[(v) => !!v || $t('report.form.speciesWarning')]"
+        outlined
+        color="indigo"
+        style="min-height: 96px"
+        :label="$t('report.form.speciesField')"
+        prepend-icon="pets"
         required
-      ></v-select>
+      ></v-autocomplete>
+
+      <v-textarea
+        v-model="description"
+        auto-grow
+        outlined
+        color="indigo"
+        :label="$t('report.form.descField')"
+        style="min-height: 96px"
+        rows="1"
+        prepend-icon="description"
+      ></v-textarea>
 
       <v-text-field
-        v-model="name"
-        :counter="10"
-        :rules="nameRules"
-        label="Name"
-        required
+        v-model="imagePath"
+        outlined
+        color="indigo"
+        :label="$t('report.form.picField')"
+        style="min-height: 96px"
+        :rules="[(v) => !!v || $t('report.form.picWarning')]"
+        prepend-icon="camera_alt"
       ></v-text-field>
 
       <img v-if="imagePath !== ''" :src="imagePath" />
-      <v-btn @click="takePicture">{{ $t("consult.takePhoto") }}</v-btn>
-
-      <br />
-
-      <v-btn
-        :disabled="!valid"
-        color="success"
-        class="mr-4 mt-8"
-        @click="validate"
+      <v-btn color="indigo" class="ma-2 white--text" @click="takePicture">
+        <v-icon left>add_a_photo</v-icon
+        >{{ $t("report.form.takePhotoButton") }}</v-btn
       >
-        Validate
-      </v-btn>
-
-      <v-btn color="error" class="mr-4 mt-8" @click="reset">
-        Reset Form
-      </v-btn>
     </v-form>
+    <v-divider></v-divider>
+    <v-card-actions>
+      <v-btn
+        :disabled="!form"
+        :loading="isLoading"
+        class="white--text"
+        color="success"
+        depressed
+        @click="sendForm"
+        >{{ $t("report.form.sendButton") }}</v-btn
+      >
+      <v-spacer></v-spacer>
+      <v-btn text @click="$refs.form.reset()" color="error">
+        {{ $t("report.form.resetButton") }}
+      </v-btn>
+    </v-card-actions>
   </v-container>
 </template>
 
@@ -46,22 +67,41 @@ export default {
   name: "report",
   data() {
     return {
+      select: null,
+      description: "",
       imagePath: "",
 
-      valid: true,
-      name: "",
-      nameRules: [
-        (v) => !!v || "Name is required",
-        (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
+      items: [
+        "Acrothamne de Preiss",
+        "Flocon pédonculé blanc",
+        "Algue à crochets",
+        "Algue chevelue rouge",
+        "Crabe bleu américain",
+        "Raisin de mer",
+        "Caulerpe à feuilles d’if",
+        "Algue chou-fleur",
+        "Huître creuse",
+        "Poisson flûte",
+        "Poisson ballon",
+        "Lophocladia lallemendii",
+        "Microcosmus squamiger",
+        "Méduse américaine",
+        "Ostréopsis",
+        "Blennie pilicorne",
+        "Crabe plat des oursins",
+        "Huître perlière rayée",
+        "Serpenton à selles",
+        "Rascasse volante de l’océan Indien",
+        "Sargasse japonaise",
+        "Poisson-lapin à queue tronquée",
+        "Poisson-lapin à ventre strié ",
+        "Ascidie blanche plissée",
+        "Poisson pierre commun ",
+        "Womersleyelle sétacée",
       ],
-      email: "",
-      emailRules: [
-        (v) => !!v || "E-mail is required",
-        (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
-      ],
-      select: null,
-      items: ["Item 1", "Item 2", "Item 3", "Item 4"],
-      checkbox: false,
+
+      form: false,
+      isLoading: false,
     };
   },
   methods: {
@@ -70,12 +110,9 @@ export default {
       if (navigator.camera) {
         navigator.camera.getPicture(this.setPicture, this.error, {});
       } else {
-        // If the navigator.camera is not available display generic error to the user.
         this.error();
       }
     },
-    // Set the picture path in the data of the vue
-    // this action will automatically update the view.
     setPicture(imagePath) {
       this.imagePath = imagePath;
     },
@@ -86,7 +123,19 @@ export default {
       this.$refs.form.validate();
     },
     reset() {
+      this.imagePath = "";
       this.$refs.form.reset();
+    },
+    sendForm() {
+      // Upload de la photo + envoi des données
+      alert(
+        "Espèce : " +
+          this.select +
+          "\nDescription : " +
+          this.description +
+          "\nPhoto : " +
+          this.imagePath
+      );
     },
   },
 };

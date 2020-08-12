@@ -1,1 +1,31 @@
-{}
+{
+  "title": "Specie invasive - ALIEM",
+  "showMenu": "Visualizzare il menu",
+  "drawer": {
+    "home": "Accoglienza",
+    "news": "Notizie",
+    "consult": "Carte delle specie",
+    "report": "Segnala una specie",
+    "identify": "Identificare una specie",
+    "profile": "Mio profilo",
+    "settings": "Impostazioni"
+  },
+  "news": {},
+  "consult": {},
+  "report": {
+    "form": {
+      "speciesField": "Specie",
+      "speciesWarning": "È richiesta una specie",
+      "descField": "Descrizione",
+      "picField": "Foto",
+      "picWarning": "È richiesta una foto",
+      "takePhotoButton": "Scatta una foto",
+      "sendButton": "Invia",
+      "resetButton": "Cancellare"
+    }
+  },
+  "identify": {},
+  "profile": {},
+  "settings": {},
+  "error": "Non sono state scattate foto"
+}

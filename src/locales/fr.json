@@ -10,23 +10,22 @@
     "profile": "Mon Profil",
     "settings": "Paramètres"
   },
-  "news": {
-
-  },
-  "consult": {
-    "takePhoto": "Prendre une photo"
-  },
+  "news": {},
+  "consult": {},
   "report": {
-
+    "form": {
+      "speciesField": "Espèce",
+      "speciesWarning": "Une espèce est requise",
+      "descField": "Description",
+      "picField": "Photo",
+      "picWarning": "Une photo est requise",
+      "takePhotoButton": "Prendre une photo",
+      "sendButton": "Envoyer",
+      "resetButton": "Effacer"
+    }
   },
-  "identify": {
-
-  },
-  "profile": {
-
-  },
-  "settings": {
-
-  },
-  "error": "Non disponible"
+  "identify": {},
+  "profile": {},
+  "settings": {},
+  "error": "Aucune photo n'a été prise"
 }
