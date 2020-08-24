@@ -100,6 +100,14 @@ module.exports = [
     "file": "plugins/phonegap-nfc/www/phonegap-nfc.js",
     "pluginId": "phonegap-nfc",
     "runs": true
+  },
+  {
+    "id": "cordova-plugin-inappbrowser.inappbrowser",
+    "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+    "pluginId": "cordova-plugin-inappbrowser",
+    "clobbers": [
+      "cordova.InAppBrowser.open"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -114,7 +122,8 @@ module.exports.metadata =
   "cordova-plugin-statusbar": "2.4.1",
   "cordova-plugin-vibration": "2.1.6",
   "cordova-plugin-whitelist": "1.3.3",
-  "phonegap-nfc": "0.6.6"
+  "phonegap-nfc": "0.6.6",
+  "cordova-plugin-inappbrowser": "4.0.0"
 };
 // BOTTOM OF METADATA
 });

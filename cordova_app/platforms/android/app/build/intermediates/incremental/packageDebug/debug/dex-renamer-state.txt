@@ -1,4 +1,4 @@
-#Wed Aug 12 11:15:36 CEST 2020
+#Mon Aug 24 09:15:39 CEST 2020
 base.0=C\:\\Users\\matte\\Documents\\GitHub\\especes-invasives\\cordova_app\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

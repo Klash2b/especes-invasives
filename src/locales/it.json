@@ -22,6 +22,10 @@
       "takePhotoButton": "Scatta una foto",
       "sendButton": "Invia",
       "resetButton": "Cancellare"
+    },
+    "pos": {
+      "positionNotAvailable": "Posizione non possibile, attivare la geolocalizzazione",
+      "title": "Posizione"
     }
   },
   "identify": {},

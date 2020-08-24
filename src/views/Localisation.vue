@@ -62,11 +62,11 @@
           }, () => {
             // If the geolocation plugin not answer or if we reach the timeout
             this.stopLoading();
-            nativeAlert(this.$t("positionNotAvailable", this.$t("localisation")));
+            nativeAlert(this.$t('report.pos.positionNotAvailable'), this.$t("localisation"));
           });
         }else{
           // If the browser is not compatible
-          nativeAlert(this.$t("positionNotAvailable", this.$t("localisation")));
+          nativeAlert(this.$t('report.pos.positionNotAvailable'), this.$t("localisation"));
           this.stopLoading();
         }
       }

@@ -104,6 +104,7 @@ export default {
       isLoading: false,
     };
   },
+  mounted() {},
   methods: {
     // Use the camera plugin to capture image
     takePicture() {
@@ -119,6 +120,12 @@ export default {
     error() {
       nativeAlert(this.$t("error"));
     },
+    locError() {
+      nativeAlert(
+        this.$t("report.pos.positionNotAvailable"),
+        this.$t("report.pos.title")
+      );
+    },
     validate() {
       this.$refs.form.validate();
     },
@@ -127,14 +134,32 @@ export default {
       this.$refs.form.reset();
     },
     sendForm() {
-      // Upload de la photo + envoi des données
-      alert(
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          this.successLoc,
+          this.locError,
+          {
+            enableHighAccuracy: true,
+            timeout: 3000,
+          }
+        );
+      } else {
+        this.locError();
+      }
+    },
+    successLoc(pos) {
+      nativeAlert(
         "Espèce : " +
           this.select +
           "\nDescription : " +
           this.description +
           "\nPhoto : " +
-          this.imagePath
+          this.imagePath +
+          "\nLatitude : " +
+          pos.coords.latitude +
+          "\nLongitude : " +
+          pos.coords.longitude,
+        this.$t("report.pos.title")
       );
     },
   },
