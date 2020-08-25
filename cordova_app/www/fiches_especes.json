@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Crabe bleu américain",
+    "src": "https://doris.ffessm.fr/var/doris/storage/images/media/images/callinectes_sapidus-ym02/2858985-3-fre-FR/callinectes_sapidus-ym02_image600.jpg",
+    "specie": "Callinectes sapidus",
+    "idText": "Carapace avec 2 dents frontales triangulaires et 9 dents latérales, la dernière étant très longue\nCrabe de grande taille, la largeur de la carapace peut dépasser 23 cm\nDernière paire de pattes terminée en palette aplatie\nAbdomen des mâles étroit et en forme de T\nCouleur plus ou moins bleue",
+    "flex": 6
+  },{
+    "id": 2,
+    "name": "Algue chou-fleur",
+    "src": "https://doris.ffessm.fr/var/doris/storage/images/images/petit-specimen-de-profil-23090/197729-1-fre-FR/codium_fragile-11_image600.jpg",
+    "specie": "Codium fragile",
+    "idText": "Codium fragile est une algue verte à vert foncé de taille moyenne (pouvant atteindre 30 cm de haut), dont la consistance est semblable à celle d’une éponge – douce et spongieuse. Elle est constituée d’axes présentant une dichotomie régulière (en forme de Y). Sa surface peut être recouverte d’une multitude de poils qui lui donne cet aspect duveteux et caractéristique des Codium. Sous une loupe, sa surface formée de petites vésicules terminées par une pointe la distingue des Codium de Méditerranée.",
+    "flex": 6
+  }
+]

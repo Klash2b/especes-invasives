@@ -43,6 +43,6 @@
     <plugin name="phonegap-nfc" spec="^0.6.6" />
     <plugin name="cordova-plugin-vibration" spec="^2.1.6" />
     <plugin name="cordova-plugin-inappbrowser" spec="^4.0.0" />
-    <engine name="android" spec="^7.1.4" />
     <plugin name="cordova-plugin-nano-sqlite" spec="^1.7.0" />
+    <engine name="android" spec="^7.1.4" />
 </widget>
