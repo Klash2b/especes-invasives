@@ -1,15 +1,13 @@
 <template>
   <div>
-    <v-snackbar v-model="showOperationStatus">{{
-      operationStatus
-    }}</v-snackbar>
+    <v-snackbar v-model="showOperationStatus">{{ operationStatus }}</v-snackbar>
     <v-flex xs12 sm6 offset-sm3>
       <v-card>
         <v-list three-line>
           <v-subheader>
             {{ persons.length }} records
             <v-spacer></v-spacer>
-            <v-btn text @click="loadCsv">load csv</v-btn>
+            <v-btn text @click="loadCsv">load json</v-btn>
             <v-btn text @click="deleteAll()">
               Delete all<v-icon color="lighten-1">delete</v-icon>
             </v-btn>
@@ -23,15 +21,9 @@
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title
-                  v-html="`${person.first_name} ${person.last_name}`"
-                ></v-list-item-title>
-                <v-list-item-subtitle
-                  v-html="`Email: ${person.email}`"
-                ></v-list-item-subtitle>
-                <v-list-item-subtitle
-                  v-html="`IP: ${person.ip_address}`"
-                ></v-list-item-subtitle>
+                <v-list-item-title>{{ person.animal_name }}</v-list-item-title>
+                <v-list-item-subtitle>{{ person.animal_sc_name }}</v-list-item-subtitle>
+                <v-list-item-subtitle>{{ person.location }}</v-list-item-subtitle>
               </v-list-item-content>
               <v-list-item-action>
                 <v-btn icon ripple @click="deletePerson(person)">
@@ -66,11 +58,9 @@ export default {
       () => {
         let model = [
           { key: "id", type: "int", props: ["pk", "ai"] },
-          { key: "first_name", type: "string" },
-          { key: "last_name", type: "string" },
-          { key: "email", type: "string" },
-          { key: "gender", type: "string" },
-          { key: "ip_address", type: "string" },
+          { key: "animal_name", type: "string" },
+          { key: "animal_sc_name", type: "string" },
+          { key: "location", type: "string" },
           { key: "avatar", type: "string" },
         ];
 
@@ -96,13 +86,13 @@ export default {
       else this.persons = rows;
     },
     loadCsv() {
-      axios.get("MOCK_DATA.csv", {}).then((response) => {
+      axios.get("MOCK_DATA.json", {}).then((response) => {
         nSQL()
-          .loadCSV("persondb", response.data, false)
+          .loadJS("persondb", response.data, false)
           .then(() => {
             this.refreshData().then(() => {
               this.showOperationStatus = true;
-              this.operationStatus = `CSV loaded`;
+              this.operationStatus = `JSON loaded`;
             });
           });
       });
