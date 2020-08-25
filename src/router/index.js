@@ -7,6 +7,7 @@ import Report from '@/views/Report'
 import Identify from '@/views/Identify'
 import Profile from '@/views/Profile'
 import Settings from '@/views/Settings'
+import TestDB from '@/views/TestDB'
 
 Vue.use(Router);
 
@@ -40,6 +41,10 @@ export default new Router({
       path: '/settings',
       name: 'Settings',
       component: Settings
+    },{
+      path: '/testdb',
+      name: 'TestDB',
+      component: TestDB
     },
   ]
 })

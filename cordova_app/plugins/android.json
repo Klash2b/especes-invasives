@@ -40,7 +40,17 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "vuejs.cordova.sample"
+    },
+    "cordova-plugin-nano-sqlite": {
+      "PACKAGE_NAME": "vuejs.cordova.sample"
     }
   },
-  "dependent_plugins": {}
+  "dependent_plugins": {
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "vuejs.cordova.sample"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "vuejs.cordova.sample"
+    }
+  }
 }

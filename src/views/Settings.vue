@@ -39,7 +39,7 @@ export default {
     swapLanguage(selectedLang) {
       if (this.$i18n.locale !== selectedLang) {
         this.$i18n.locale = selectedLang;
-        console.log("La langue a bien été changée en " + selectedLang + " !");
+        // console.log("La langue a bien été changée en " + selectedLang + " !");
       }
     },
   },
