@@ -105,7 +105,9 @@ export default {
     };
   },
   mounted() {
-    this.select = this.$route.params.ficheName;
+    if (this.$route.params.ficheName != null) {
+      this.select = this.$route.params.ficheName;
+    }
   },
   methods: {
     // Use the camera plugin to capture image
