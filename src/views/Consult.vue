@@ -46,7 +46,7 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-btn color="indigo" text>
+          <v-btn color="indigo" text @click="$router.push({ name: 'Report', params: { ficheName: ficheName } })">
             Signaler
           </v-btn>
         </v-card-actions>
@@ -68,6 +68,10 @@ export default {
       showOperationStatus: false,
       operationStatus: "",
       fiches: [],
+      ficheName: '',
+      ficheSrc: '',
+      ficheSpecie: '',
+      ficheIdText: '',
     };
   },
   mounted() {

@@ -30,7 +30,11 @@ export default new Router({
       name: 'Identify',
       component: Identify
     },{
-      path: '/report',
+      path: '/report/',
+      name: 'Report',
+      component: Report
+    },{
+      path: '/report/:ficheName',
       name: 'Report',
       component: Report
     },{
