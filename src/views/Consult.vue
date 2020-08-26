@@ -3,14 +3,14 @@
 <template>
   <v-container fluid>
     <!-- <v-snackbar v-model="showOperationStatus">{{ operationStatus }}</v-snackbar> -->
-    <v-subheader>
+    <!-- <v-subheader>
       {{ fiches.length }} records
       <v-spacer></v-spacer>
       <v-btn text @click="loadJson">load json</v-btn>
       <v-btn text @click="deleteAll()">
         Delete all<v-icon color="lighten-1">delete</v-icon>
       </v-btn>
-    </v-subheader>
+    </v-subheader> -->
     <v-row dense>
       <v-col v-for="fiche in fiches" :key="fiche.id" :cols="fiche.flex">
         <v-card @click="cardClick(fiche)">
@@ -46,7 +46,13 @@
         </v-card-text>
 
         <v-card-actions>
-          <v-btn color="indigo" text @click="$router.push({ name: 'Report', params: { ficheName: ficheName } })">
+          <v-btn
+            color="indigo"
+            text
+            @click="
+              $router.push({ name: 'Report', params: { ficheName: ficheName } })
+            "
+          >
             Signaler
           </v-btn>
         </v-card-actions>
@@ -68,10 +74,10 @@ export default {
       showOperationStatus: false,
       operationStatus: "",
       fiches: [],
-      ficheName: '',
-      ficheSrc: '',
-      ficheSpecie: '',
-      ficheIdText: '',
+      ficheName: "",
+      ficheSrc: "",
+      ficheSpecie: "",
+      ficheIdText: "",
     };
   },
   mounted() {
@@ -98,7 +104,7 @@ export default {
           this.refreshData();
         });
       },
-      this.loadJson()
+      this.loadJson(),
     );
   },
   methods: {
@@ -121,29 +127,29 @@ export default {
           });
       });
     },
-    deleteFiche(fiche) {
-      nSQL("fichedb")
-        .query("delete")
-        .where(["id", "=", fiche.id])
-        .exec()
-        .then((rows) => {
-          this.showOperationStatus = true;
-          this.operationStatus = `${rows.length} rows deleted`;
-          this.refreshData();
-        });
-    },
-    deleteAll() {
-      nSQL("fichedb")
-        .query("delete")
-        .exec()
-        .then((result) => {
-          if (result[0].msg) {
-            this.showOperationStatus = true;
-            this.operationStatus = result[0].msg;
-          }
-          this.refreshData();
-        });
-    },
+    // deleteFiche(fiche) {
+    //   nSQL("fichedb")
+    //     .query("delete")
+    //     .where(["id", "=", fiche.id])
+    //     .exec()
+    //     .then((rows) => {
+    //       this.showOperationStatus = true;
+    //       this.operationStatus = `${rows.length} rows deleted`;
+    //       this.refreshData();
+    //     });
+    // },
+    // deleteAll() {
+    //   nSQL("fichedb")
+    //     .query("delete")
+    //     .exec()
+    //     .then((result) => {
+    //       if (result[0].msg) {
+    //         this.showOperationStatus = true;
+    //         this.operationStatus = result[0].msg;
+    //       }
+    //       this.refreshData();
+    //     });
+    // },
     cardClick(fiche) {
       this.ficheName = fiche.name;
       this.ficheSrc = fiche.src;

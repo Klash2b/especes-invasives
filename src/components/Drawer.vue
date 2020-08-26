@@ -49,12 +49,7 @@ export default {
           icon: "settings",
           text: this.$t("drawer.settings"),
           action: "settings",
-        },
-        {
-          icon: "storage",
-          text: 'Test DB',
-          action: "testdb",
-        },
+        }
       ];
     },
   },
