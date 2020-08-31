@@ -50,7 +50,7 @@
             color="indigo"
             text
             @click="
-              $router.push({ name: 'Report', params: { ficheName: ficheName } })
+              $router.push({ name: 'report', params: { ficheName: ficheName } })
             "
           >
             Signaler

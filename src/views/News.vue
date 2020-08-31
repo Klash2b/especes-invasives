@@ -3,25 +3,26 @@
 <template>
   <v-container>
     <v-flex>
-      <div v-for="article in articles" :key="article.title">
+      <div v-for="article in articles" :key="article.id">
         <v-card class="mb-6 mt-2">
-          <v-img height="200px" v-bind:src="article.imgSrc"></v-img>
-                <v-card-title>
-                  <span>{{ article.title }}</span>
-                </v-card-title>
+          <v-img height="200px" v-bind:src="article.image"></v-img>
+          <v-card-title>
+            <span>{{ article.title }}</span>
+          </v-card-title>
           <v-card-text>
-            {{ article.description }}
+            {{ article.description | truncate(130)}}
           </v-card-text>
           <v-card-actions>
-            <!-- <v-chip small color="secondary" class="white--text">
-              {{ article.chip }}
-            </v-chip> -->
+            <v-chip small color="secondary" class="white--text">
+              {{ formatDate(article.date) }}
+            </v-chip>
             <v-spacer></v-spacer>
 
             <v-btn
               small
               replace
-              color="info"
+              color="indigo"
+              class="white--text"
               v-bind:href="article.url"
               >Voir plus</v-btn
             >
@@ -33,44 +34,27 @@
 </template>
 
 <script>
+const axios = require("axios");
+
 export default {
   name: "news",
   data() {
     return {
-      articles: [
-        {
-          id: 1,
-          title: "Article 1",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima corrupti adipisci ut dicta",
-          imgSrc:
-            "https://doris.ffessm.fr/var/doris/storage/images/media/images/callinectes_sapidus-ym02/2858985-3-fre-FR/callinectes_sapidus-ym02_image600.jpg",
-          chip: "srcName",
-          url: "",
-        },
-        {
-          id: 2,
-          title: "Article 2",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima corrupti adipisci ut dicta",
-          imgSrc:
-            "https://doris.ffessm.fr/var/doris/storage/images/images/petit-specimen-de-profil-23090/197729-1-fre-FR/codium_fragile-11_image600.jpg",
-          chip: "srcName",
-          url: "",
-        },
-        {
-          id: 3,
-          title: "Article 3",
-          description:
-            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima corrupti adipisci ut dicta",
-          imgSrc:
-            "https://doris.ffessm.fr/var/doris/storage/images/media/images/callinectes_sapidus-ym02/2858985-3-fre-FR/callinectes_sapidus-ym02_image600.jpg",
-          chip: "srcName",
-          url: "",
-        },
-      ],
+      articles: null,
     };
   },
-  methods: {},
+  mounted() {
+    axios
+      .get("http://aliem.arobase.corsica/json_cal_news.php")
+      .then((response) => (this.articles = response.data.news));
+  },
+  methods: {
+    formatDate(timestamp){
+      let milliseconds = timestamp * 1000
+      let dateObject = new Date(milliseconds)
+      let humanDateFormat = dateObject.toLocaleDateString('fr-FR', {year: 'numeric', month: 'short', day: 'numeric'})
+      return humanDateFormat
+    }
+  },
 };
 </script>

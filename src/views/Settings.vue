@@ -2,13 +2,13 @@
 
 <template>
   <v-container text-center>
-    <v-btn>Paramètres</v-btn>
+    <!-- <v-btn>Paramètres</v-btn> -->
     <v-btn
       depressed
       height="64px"
       width="64px"
       @click="swapLanguage('fr')"
-      class="btnLangFrance"
+      class="btnLangFrance mx-6"
     >
       <v-img contain height="64px" width="64px" :src="images.france"></v-img>
     </v-btn>
@@ -17,7 +17,7 @@
       height="64px"
       width="64px"
       @click="swapLanguage('it')"
-      class="btnLangItaly"
+      class="btnLangItaly mx-6"
     >
       <v-img contain height="64px" width="64px" :src="images.italy"></v-img>
     </v-btn>

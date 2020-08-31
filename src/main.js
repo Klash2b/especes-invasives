@@ -29,3 +29,10 @@ const isCordovaApp = (typeof window.cordova !== "undefined");
 if (!isCordovaApp){
   document.dispatchEvent(new CustomEvent("deviceready", {}));
 }
+
+Vue.filter('truncate', function (value, limit) {
+  if (value.length > limit) {
+      value = value.substring(0, (limit - 3)) + '...';
+  }
+  return value
+})
