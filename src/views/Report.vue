@@ -1,10 +1,19 @@
-// Require Cordova plugin : cordova-plugin-camera
+// Page permettant le signalement d'espèces invasives
 <template>
   <v-container text-center>
+    <!-- Message s'affichant si aucune donnée n'a été téléchargée et permettant
+    à l'utilisateur de relancer la page une fois la connexion internet rétablie -->
+    <v-row dense v-show="this.especes == null">
+      <v-text
+        >Pas de connexion internet, impossible de charger les fiches espèces
+        !</v-text
+      >
+      <v-btn @click="getData()">Reload Page</v-btn>
+    </v-row>
     <v-form ref="form" v-model="form" class="pa-4 pt-6">
       <v-autocomplete
         v-model="select"
-        :items="items"
+        :items="especes"
         :rules="[(v) => !!v || $t('report.form.speciesWarning')]"
         outlined
         color="indigo"
@@ -61,56 +70,54 @@
 </template>
 
 <script>
+const axios = require("axios");
 import { nativeAlert } from "../libs/index";
 
 export default {
   name: "report",
   data() {
     return {
-      select: null,
+      especes: null, // Variable récupérant les données depuis la BDD Locale et contenant tous les noms des espèces invasives
+      select: null, // Variable permettant d'initialiser le 'select' avec le nom d'une espèce signalée depuis une fiche
       description: "",
       imagePath: "",
-
-      items: [
-        "Acrothamne de Preiss",
-        "Flocon pédonculé blanc",
-        "Algue à crochets",
-        "Algue chevelue rouge",
-        "Crabe bleu américain",
-        "Raisin de mer",
-        "Caulerpe à feuilles d’if",
-        "Algue chou-fleur",
-        "Huître creuse",
-        "Poisson flûte",
-        "Poisson ballon",
-        "Lophocladia lallemendii",
-        "Microcosmus squamiger",
-        "Méduse américaine",
-        "Ostréopsis",
-        "Blennie pilicorne",
-        "Crabe plat des oursins",
-        "Huître perlière rayée",
-        "Serpenton à selles",
-        "Rascasse volante de l’océan Indien",
-        "Sargasse japonaise",
-        "Poisson-lapin à queue tronquée",
-        "Poisson-lapin à ventre strié ",
-        "Ascidie blanche plissée",
-        "Poisson pierre commun ",
-        "Womersleyelle sétacée",
-      ],
 
       form: false,
       isLoading: false,
     };
   },
+  beforeMount() {
+    // On récupère les données de l'API externe avant d'afficher les noms des espèces
+    this.getData()
+  },
+  created() {
+    // On remplis la variable 'especes' avec le contenu de la BDD LocalStorage
+    this.especes = JSON.parse(localStorage.getItem("especesDB"));
+  },
   mounted() {
+    // Permet d'initialiser le 'select' avec le nom d'une espèce signalée depuis une fiche
     if (this.$route.params.ficheName != null) {
       this.select = this.$route.params.ficheName;
     }
   },
   methods: {
-    // Use the camera plugin to capture image
+    // Fonction permettant de récupérer les données de
+    // l'API externe et de les stocker dans la BDD LocalStorage
+    getData(){
+      axios
+      .get(
+        "https://gaia.oec.fr/getdata.php?do=get_especes_inv&key=fea9a667df9db40499ebf94e5b6a07f6"
+      )
+      .then((response) =>
+        localStorage.setItem(
+          "especesDB",
+          JSON.stringify(response.data.result.data.map(especes => especes.nom_scientifique))
+        )
+      );
+      this.especes = JSON.parse(localStorage.getItem("especesDB"));
+    },
+    // Fonction utilisant le plugin cordova
+    // camera et permettant de prendre une photo
     takePicture() {
       if (navigator.camera) {
         navigator.camera.getPicture(this.setPicture, this.error, {});
@@ -118,9 +125,13 @@ export default {
         this.error();
       }
     },
+    // Fonction permettant de récupérer le chemin de l'image
+    // prise en photo et d'envoyer ce chemin dans l'input dédié
     setPicture(imagePath) {
       this.imagePath = imagePath;
     },
+    // Fonctions permettant d'envoyer une alerte avec
+    // les informations des erreurs rencontrées
     error() {
       nativeAlert(this.$t("error"));
     },
@@ -130,14 +141,18 @@ export default {
         this.$t("report.pos.title")
       );
     },
+    // Fonction permettant de valider le formulaire
     validate() {
       this.$refs.form.validate();
     },
+    // Fonction permettant de réinitialiser le formulaire
     reset() {
       this.imagePath = "";
       this.$refs.form.reset();
     },
+    // Fonction permettant d'envoyer le formulaire
     sendForm() {
+      // On récupère la géolocalisation de l'utilisateur
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           this.successLoc,
@@ -151,6 +166,7 @@ export default {
         this.locError();
       }
     },
+    // Si la localisation a aboutit
     successLoc(pos) {
       nativeAlert(
         "Espèce : " +

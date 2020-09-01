@@ -33,6 +33,10 @@ export default new Router({
       name: 'report',
       component: Report
     },{
+      // Route permettant de faire passer le nom de l'espèce
+      // depuis laquelle on appuie sur le bouton "signaler"
+      // de la fiche depuis la vue 'Consult.vue' vers la vue
+      // 'Report.vue' dans le champ select
       path: '/report/:ficheName',
       name: 'report',
       component: Report

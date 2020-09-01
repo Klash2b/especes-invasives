@@ -27,6 +27,10 @@ export default {
   computed: {
     items() {
       return [
+        // Menu latéral (Drawer)
+        // icon: icône material design
+        // text: le texte à afficher
+        // action: la route sur laquelle aller
         { icon: "home", text: this.$t("drawer.home"), action: "/" },
         { icon: "description", text: this.$t("drawer.news"), action: "news" },
         {

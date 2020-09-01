@@ -108,30 +108,6 @@ module.exports = [
     "clobbers": [
       "cordova.InAppBrowser.open"
     ]
-  },
-  {
-    "id": "cordova-sqlite-storage.SQLitePlugin",
-    "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
-    "pluginId": "cordova-sqlite-storage",
-    "clobbers": [
-      "SQLitePlugin"
-    ]
-  },
-  {
-    "id": "cordova-plugin-device.device",
-    "file": "plugins/cordova-plugin-device/www/device.js",
-    "pluginId": "cordova-plugin-device",
-    "clobbers": [
-      "device"
-    ]
-  },
-  {
-    "id": "cordova-plugin-nano-sqlite.nSQLite",
-    "file": "plugins/cordova-plugin-nano-sqlite/plugin.js",
-    "pluginId": "cordova-plugin-nano-sqlite",
-    "clobbers": [
-      "nSQLite"
-    ]
   }
 ];
 module.exports.metadata = 
@@ -147,10 +123,7 @@ module.exports.metadata =
   "cordova-plugin-vibration": "2.1.6",
   "cordova-plugin-whitelist": "1.3.3",
   "phonegap-nfc": "0.6.6",
-  "cordova-plugin-inappbrowser": "4.0.0",
-  "cordova-sqlite-storage": "5.0.1",
-  "cordova-plugin-device": "2.0.3",
-  "cordova-plugin-nano-sqlite": "1.3.0"
+  "cordova-plugin-inappbrowser": "4.0.0"
 };
 // BOTTOM OF METADATA
 });
