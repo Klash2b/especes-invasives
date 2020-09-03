@@ -108,6 +108,14 @@ module.exports = [
     "clobbers": [
       "cordova.InAppBrowser.open"
     ]
+  },
+  {
+    "id": "cordova-plugin-device.device",
+    "file": "plugins/cordova-plugin-device/www/device.js",
+    "pluginId": "cordova-plugin-device",
+    "clobbers": [
+      "device"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -123,7 +131,8 @@ module.exports.metadata =
   "cordova-plugin-vibration": "2.1.6",
   "cordova-plugin-whitelist": "1.3.3",
   "phonegap-nfc": "0.6.6",
-  "cordova-plugin-inappbrowser": "4.0.0"
+  "cordova-plugin-inappbrowser": "4.0.0",
+  "cordova-plugin-device": "2.0.3"
 };
 // BOTTOM OF METADATA
 });

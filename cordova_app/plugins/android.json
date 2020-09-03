@@ -40,6 +40,9 @@
     },
     "cordova-plugin-inappbrowser": {
       "PACKAGE_NAME": "vuejs.cordova.sample"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "vuejs.cordova.sample"
     }
   },
   "dependent_plugins": {}

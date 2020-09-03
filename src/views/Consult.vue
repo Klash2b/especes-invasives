@@ -4,10 +4,9 @@
     <!-- Message s'affichant si aucune donnée n'a été téléchargée et permettant
     à l'utilisateur de relancer la page une fois la connexion internet rétablie -->
     <v-row dense v-show="this.fiches == null">
-      <v-text
-        >Pas de connexion internet, impossible de charger les fiches espèces
-        !</v-text
-      >
+      <div>
+        Pas de connexion internet, impossible de charger les fiches espèces !
+      </div>
       <v-btn @click="getData()">Reload Page</v-btn>
     </v-row>
     <v-row dense>
@@ -126,7 +125,7 @@ export default {
   },
   beforeMount() {
     // On récupère les données de l'API externe avant d'afficher les fiches
-    this.getData()
+    this.getData();
   },
   created() {
     // On remplis la variable 'fiches' avec le contenu de la BDD LocalStorage
@@ -135,17 +134,17 @@ export default {
   methods: {
     // Fonction permettant de récupérer les données de
     // l'API externe et de les stocker dans la BDD LocalStorage
-    getData(){
+    getData() {
       axios
-      .get(
-        "https://gaia.oec.fr/getdata.php?do=get_especes_inv&key=fea9a667df9db40499ebf94e5b6a07f6"
-      )
-      .then((response) =>
-        localStorage.setItem(
-          "fichesDB",
-          JSON.stringify(response.data.result.data)
+        .get(
+          "https://gaia.oec.fr/getdata.php?do=get_especes_inv&key=fea9a667df9db40499ebf94e5b6a07f6"
         )
-      );
+        .then((response) =>
+          localStorage.setItem(
+            "fichesDB",
+            JSON.stringify(response.data.result.data)
+          )
+        );
       this.fiches = JSON.parse(localStorage.getItem("fichesDB"));
     },
     // Fonction permettant d'initialiser le modal avec les données

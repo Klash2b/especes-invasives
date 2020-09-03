@@ -4,10 +4,9 @@
     <!-- Message s'affichant si aucune donnée n'a été téléchargée et permettant
     à l'utilisateur de relancer la page une fois la connexion internet rétablie -->
     <v-row dense v-show="this.especes == null">
-      <v-text
-        >Pas de connexion internet, impossible de charger les fiches espèces
-        !</v-text
-      >
+      <div>
+        Pas de connexion internet, impossible de charger les fiches espèces !
+      </div>
       <v-btn @click="getData()">Reload Page</v-btn>
     </v-row>
     <v-form ref="form" v-model="form" class="pa-4 pt-6">
@@ -36,6 +35,7 @@
 
       <v-text-field
         v-model="imagePath"
+        readonly
         outlined
         color="indigo"
         :label="$t('report.form.picField')"
@@ -88,7 +88,7 @@ export default {
   },
   beforeMount() {
     // On récupère les données de l'API externe avant d'afficher les noms des espèces
-    this.getData()
+    this.getData();
   },
   created() {
     // On remplis la variable 'especes' avec le contenu de la BDD LocalStorage
@@ -103,24 +103,39 @@ export default {
   methods: {
     // Fonction permettant de récupérer les données de
     // l'API externe et de les stocker dans la BDD LocalStorage
-    getData(){
+    getData() {
       axios
-      .get(
-        "https://gaia.oec.fr/getdata.php?do=get_especes_inv&key=fea9a667df9db40499ebf94e5b6a07f6"
-      )
-      .then((response) =>
-        localStorage.setItem(
-          "especesDB",
-          JSON.stringify(response.data.result.data.map(especes => especes.nom_scientifique))
+        .get(
+          "https://gaia.oec.fr/getdata.php?do=get_especes_inv&key=fea9a667df9db40499ebf94e5b6a07f6"
         )
-      );
+        .then((response) =>
+          localStorage.setItem(
+            "especesDB",
+            JSON.stringify(
+              response.data.result.data.map(
+                (especes) => especes.nom_scientifique
+              )
+            )
+          )
+        );
       this.especes = JSON.parse(localStorage.getItem("especesDB"));
     },
     // Fonction utilisant le plugin cordova
     // camera et permettant de prendre une photo
     takePicture() {
       if (navigator.camera) {
-        navigator.camera.getPicture(this.setPicture, this.error, {});
+        navigator.camera.getPicture(this.setPicture, this.error, {
+          quality: 70,
+          destinationType: Camera.DestinationType.FILE_URL,
+          sourceType: Camera.PictureSourceType.CAMERA,
+          correctOrientation: true,
+          saveToPhotoAlbum: false,
+          encodingType: Camera.EncodingType.JPG,
+          mediaType: Camera.MediaType.PICTURE,
+          targetWidth: 1024,
+          targetHeight: 1024,
+          direction: 1,
+        });
       } else {
         this.error();
       }
@@ -140,6 +155,20 @@ export default {
         this.$t("report.pos.positionNotAvailable"),
         this.$t("report.pos.title")
       );
+    },
+    setOptionCamera(srcType) {
+      return {
+        quality: 70,
+        destinationType: Camera.DestinationType.FILE_URL,
+        sourceType: srcType,
+        correctOrientation: true,
+        saveToPhotoAlbum: true,
+        encodingType: Camera.EncodingType.JPG,
+        mediaType: Camera.MediaType.PICTURE,
+        targetWidth: 1024,
+        targetHeight: 1024,
+        direction: 1,
+      };
     },
     // Fonction permettant de valider le formulaire
     validate() {
@@ -168,19 +197,21 @@ export default {
     },
     // Si la localisation a aboutit
     successLoc(pos) {
-      nativeAlert(
-        "Espèce : " +
-          this.select +
-          "\nDescription : " +
-          this.description +
-          "\nPhoto : " +
-          this.imagePath +
-          "\nLatitude : " +
-          pos.coords.latitude +
-          "\nLongitude : " +
-          pos.coords.longitude,
-        this.$t("report.pos.title")
-      );
+        nativeAlert(
+          "UUID de l'appareil : " +
+            device.uuid +
+            "\nEspèce : " +
+            this.select +
+            "\nDescription : " +
+            (this.description || "Aucune description") +
+            "\nPhoto : " +
+            this.imagePath +
+            "\nLatitude : " +
+            pos.coords.latitude +
+            "\nLongitude : " +
+            pos.coords.longitude,
+          this.$t("report.pos.title")
+        );
     },
   },
 };
