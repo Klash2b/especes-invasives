@@ -4,35 +4,45 @@
 
 <!-- ![Demo screenshot](demo.png) -->
 
-## Configuration 
+## Première configuration
 
-```bash
-# execution avec hot reload sur localhost:8080
-npm run serve
-
-# build pour la production
-npm run build
-```
-
-## Premier build
-
-Executez les commandes :
+Cloner le repo puis executer les commandes suivantes depuis \especes-invasives\ :
 
 ```sh
 npm install
 npm run build
 cd cordova_app
+cordova platform remove android
 cordova platform add android
 cordova run # ou build
 ```
 
-## Prochains build Cordova
+## Tests sur navigateur
+
+```bash
+# execution avec hot reload sur localhost:8080
+npm run serve
+```
+
+## Tests sur emulateur / mobile
 
 À partir de la racine :
 
 ```sh
+# execution sur emulateur / mobile
 npm run cordova_run # ou cordova_build
 ```
+
+## Déploiement en production
+
+À partir de la racine :
+
+```sh
+# build pour la production
+npm run build
+```
+
+
 
 <!-- ## Plugins
 
